@@ -25,12 +25,13 @@ e. What data will you be calculating from the data in the database? Be specific.
     Faraz - 
 
 f. What visualization package will you be using (Matplotlib, Plotly, Seaborn, etc)?
-Matplotlib
+    Matplotlib
 
 g. What graphs/charts will you be creating?
-
+    Nicholas - 
+    Evan - 
+    Faraz - 
 
 h. Who is responsible for what? Please note that all team members should do an equal amount
 of programming and total work.
-
-Each team member will be responsible for their own API as well as creating their own visualization of the data. 
+    Each team member will be responsible for their own API as well as creating their own visualization of the data. 
