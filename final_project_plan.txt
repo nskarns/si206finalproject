@@ -1,0 +1,34 @@
+SI 206 Final Project Plan
+
+a. What is your group's name?
+    
+
+b. Who are the people in the group (first name, last name, umich email)?
+    Nicholas Karns (nskarns@umich.edu)
+    Evan Marks (emmarks@umich.edu)
+    Faraz Ali (farazali@umich.edu)
+
+c. What APIs/websites will you be gathering data from? The base URLs for the APIs/websites
+must be different for them to count as different APIs.
+    Nicholas - 
+    Evan - 
+    Faraz - 
+
+d. What data will you collect from each API/website and store in a database? Be specific.
+    Nicholas - 
+    Evan - 
+    Faraz - 
+
+e. What data will you be calculating from the data in the database? Be specific.
+    Nicholas - 
+    Evan - 
+    Faraz - 
+
+f. What visualization package will you be using (Matplotlib, Plotly, Seaborn, etc)?
+
+
+g. What graphs/charts will you be creating?
+
+
+h. Who is responsible for what? Please note that all team members should do an equal amount
+of programming and total work.
