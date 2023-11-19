@@ -10,17 +10,17 @@ b. Who are the people in the group (first name, last name, umich email)?
 
 c. What APIs/websites will you be gathering data from? The base URLs for the APIs/websites
 must be different for them to count as different APIs.
-    Nicholas - 
+    Nicholas - https://data.police.uk/docs/
     Evan - 
     Faraz - 
 
 d. What data will you collect from each API/website and store in a database? Be specific.
-    Nicholas - 
+    Nicholas - All the neighborhoods tracked and the people working at each neighborhood
     Evan - 
     Faraz - 
 
 e. What data will you be calculating from the data in the database? Be specific.
-    Nicholas - 
+    Nicholas - What neighborhood has the most people working at it
     Evan - 
     Faraz - 
 
@@ -28,7 +28,7 @@ f. What visualization package will you be using (Matplotlib, Plotly, Seaborn, et
     Matplotlib
 
 g. What graphs/charts will you be creating?
-    Nicholas - 
+    Nicholas - Bar graph showing number of people working at each neighborhood
     Evan - 
     Faraz - 
 
