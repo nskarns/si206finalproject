@@ -1,0 +1,37 @@
+SI 206 Final Project Plan
+
+a. What is your group's name?
+    
+
+b. Who are the people in the group (first name, last name, umich email)?
+    Nicholas Karns (nskarns@umich.edu)
+    Evan Marks (emmarks@umich.edu)
+    Faraz Ali (farazali@umich.edu)
+
+c. What APIs/websites will you be gathering data from? The base URLs for the APIs/websites
+must be different for them to count as different APIs.
+    Nicholas - https://data.police.uk/docs/
+    Evan - 
+    Faraz - https://rapidapi.com/heisenbug/api/premier-league-live-scores/ 
+
+d. What data will you collect from each API/website and store in a database? Be specific.
+    Nicholas - All the neighborhoods tracked and the people working at each neighborhood
+    Evan - 
+    Faraz - Individual player statistics from several premier league teams
+
+e. What data will you be calculating from the data in the database? Be specific.
+    Nicholas - What neighborhood has the most people working at it
+    Evan - 
+    Faraz - Which players are the most productive for their team
+
+f. What visualization package will you be using (Matplotlib, Plotly, Seaborn, etc)?
+    Matplotlib
+
+g. What graphs/charts will you be creating?
+    Nicholas - Bar graph showing number of people working at each neighborhood
+    Evan - 
+    Faraz - Line chart, graphing player productivity over time 
+
+h. Who is responsible for what? Please note that all team members should do an equal amount
+of programming and total work.
+    Each team member will be responsible for their own API as well as creating their own visualization of the data. 
