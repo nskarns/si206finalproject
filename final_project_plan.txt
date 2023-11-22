@@ -1,7 +1,7 @@
 SI 206 Final Project Plan
 
 a. What is your group's name?
-    
+Triple Threat
 
 b. Who are the people in the group (first name, last name, umich email)?
     Nicholas Karns (nskarns@umich.edu)
@@ -11,17 +11,17 @@ b. Who are the people in the group (first name, last name, umich email)?
 c. What APIs/websites will you be gathering data from? The base URLs for the APIs/websites
 must be different for them to count as different APIs.
     Nicholas - https://data.police.uk/docs/
-    Evan - 
+    Evan - https://rapidapi.com/api-sports/api/api-nba/
     Faraz - https://rapidapi.com/heisenbug/api/premier-league-live-scores/ 
 
 d. What data will you collect from each API/website and store in a database? Be specific.
     Nicholas - All the neighborhoods tracked and the people working at each neighborhood
-    Evan - 
+    Evan - Team and player statistics such as finals victories and individual player point averages
     Faraz - Individual player statistics from several premier league teams
 
 e. What data will you be calculating from the data in the database? Be specific.
     Nicholas - What neighborhood has the most people working at it
-    Evan - 
+    Evan - What players had the best scoring statistics on championship-winning teams
     Faraz - Which players are the most productive for their team
 
 f. What visualization package will you be using (Matplotlib, Plotly, Seaborn, etc)?
@@ -29,7 +29,7 @@ f. What visualization package will you be using (Matplotlib, Plotly, Seaborn, et
 
 g. What graphs/charts will you be creating?
     Nicholas - Bar graph showing number of people working at each neighborhood
-    Evan - 
+    Evan - Line chart graphing the top scoring player's point average from each year's championship team
     Faraz - Line chart, graphing player productivity over time 
 
 h. Who is responsible for what? Please note that all team members should do an equal amount
