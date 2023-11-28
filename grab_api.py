@@ -7,9 +7,14 @@ def grab_police_data(conn, cur):
     # Declaring variables
     city_ids = []
 
+    # Deleting database
+    cur.execute(
+        "DROP TABLE IF EXISTS Police"
+    )
+
     # Creating database
     cur.execute(
-            "CREATE TABLE IF NOT EXISTS People (city_id, name, rank)"
+            "CREATE TABLE Police (city_id, name, rank)"
     )
 
     # Getting city ids
@@ -25,7 +30,7 @@ def grab_police_data(conn, cur):
 
         for people in data:
             cur.execute(
-                "INSERT OR IGNORE INTO People (city_id, name, rank) VALUES (?,?,?)", (city_id, people["name"], people["rank"])
+                "INSERT OR IGNORE INTO Police (city_id, name, rank) VALUES (?,?,?)", (city_id, people["name"], people["rank"])
             )
         
         conn.commit()
@@ -36,4 +41,4 @@ conn = sqlite3.connect(path + "/" + "database.db")
 cur = conn.cursor()
 
 # Call function
-# grab_police_data(conn, cur)
+grab_police_data(conn, cur)
