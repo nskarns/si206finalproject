@@ -28,8 +28,19 @@ def calculate_police_avg(conn, cur):
         other -= job
     job_nums[7] = other
 
+    # Resetting value for output
+    job_list[0] = "Total"
+
+    # Outputting data to file
+    with open("police_job_data.txt", "w") as file:
+        file.write("Police Job Data (job title - total):\n")
+        for job_title, job_count in zip(job_list, job_nums):
+            file.write(job_title + " - " + str(job_count) + "\n")
+
+    # Return
     return (job_list[1:], job_nums[1:])
 
+# Creating graph for total police jobs
 def create_police_graph(results):
     # Plotting
     plt.figure(figsize=(10, 8))
