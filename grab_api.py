@@ -2,10 +2,11 @@ import requests
 import os
 import sqlite3
 
-# Grabbing data
+# Grabbing police data
 def grab_police_data(conn, cur):
     # Declaring variables
     city_ids = []
+    counter = 0
 
     # Deleting database
     cur.execute(
