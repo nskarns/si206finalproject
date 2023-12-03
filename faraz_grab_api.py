@@ -11,13 +11,10 @@ headers = {
 conn = sqlite3.connect("premier_league_data.db")
 cur = conn.cursor()
 
-# Create a table for match information
+# Drop and recreate the Matches table with the correct structure
+cur.execute('''DROP TABLE IF EXISTS Matches''')
 cur.execute('''CREATE TABLE IF NOT EXISTS Matches
                (matchday INTEGER, team1_name TEXT, team2_name TEXT, team1_score INTEGER, team2_score INTEGER, winner TEXT)''')
-
-# Create a table for team wins
-cur.execute('''CREATE TABLE IF NOT EXISTS TeamWins
-               (team_name TEXT, matchday INTEGER, wins INTEGER)''')
 
 # Iterate through matchdays 1 to 14
 for matchday in range(1, 15):
@@ -48,11 +45,6 @@ for matchday in range(1, 15):
             # Store match information in the Matches table
             cur.execute("INSERT INTO Matches VALUES (?, ?, ?, ?, ?, ?)", (matchday, team1_name, team2_name, team1_score, team2_score, winner))
 
-            # Update team wins in the TeamWins table
-            if winner is not None and winner != "Draw":
-                cur.execute("INSERT OR IGNORE INTO TeamWins VALUES (?, ?, 0)", (winner, matchday))
-                cur.execute("UPDATE TeamWins SET wins = wins + 1 WHERE team_name = ? AND matchday = ?", (winner, matchday))
-
         # Commit changes to the database after each matchday
         conn.commit()
 
@@ -65,5 +57,3 @@ for matchday in range(1, 15):
 
 # Close the database connection
 conn.close()
-
-
