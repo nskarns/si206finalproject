@@ -13,11 +13,11 @@ cur = conn.cursor()
 
 # Create a table for match information
 cur.execute('''CREATE TABLE IF NOT EXISTS Matches
-               (matchday INTEGER, team1_name TEXT, team2_name TEXT, team1_score INTEGER, team2_score INTEGER)''')
+               (matchday INTEGER, team1_name TEXT, team2_name TEXT, team1_score INTEGER, team2_score INTEGER, winner TEXT)''')
 
 # Create a table for team wins
 cur.execute('''CREATE TABLE IF NOT EXISTS TeamWins
-               (team_name TEXT, wins INTEGER)''')
+               (team_name TEXT, matchday INTEGER, wins INTEGER)''')
 
 # Iterate through matchdays 1 to 14
 for matchday in range(1, 15):
@@ -31,29 +31,27 @@ for matchday in range(1, 15):
         for match in data.get('matches', []):
             team1_name = match['team1']['teamName']
             team2_name = match['team2']['teamName']
+            team1_score = match['team1'].get('teamScore', None)
+            team2_score = match['team2'].get('teamScore', None)
 
-            # Check if 'teamScore' key exists for both teams
-            if 'teamScore' in match['team1']:
-                team1_score = match['team1']['teamScore']
-            else:
-                team1_score = None
-
-            if 'teamScore' in match['team2']:
-                team2_score = match['team2']['teamScore']
-            else:
-                team2_score = None
-
-            # Store match information in the Matches table
-            cur.execute("INSERT INTO Matches VALUES (?, ?, ?, ?, ?)", (matchday, team1_name, team2_name, team1_score, team2_score))
-
-            # Update team wins in the TeamWins table
+            # Determine the winner or mark as draw
             if team1_score is not None and team2_score is not None:
                 if team1_score > team2_score:
-                    cur.execute("INSERT OR IGNORE INTO TeamWins VALUES (?, 0)", (team1_name,))
-                    cur.execute("UPDATE TeamWins SET wins = wins + 1 WHERE team_name = ?", (team1_name,))
+                    winner = team1_name
                 elif team2_score > team1_score:
-                    cur.execute("INSERT OR IGNORE INTO TeamWins VALUES (?, 0)", (team2_name,))
-                    cur.execute("UPDATE TeamWins SET wins = wins + 1 WHERE team_name = ?", (team2_name,))
+                    winner = team2_name
+                else:
+                    winner = "Draw"
+            else:
+                winner = None
+
+            # Store match information in the Matches table
+            cur.execute("INSERT INTO Matches VALUES (?, ?, ?, ?, ?, ?)", (matchday, team1_name, team2_name, team1_score, team2_score, winner))
+
+            # Update team wins in the TeamWins table
+            if winner is not None and winner != "Draw":
+                cur.execute("INSERT OR IGNORE INTO TeamWins VALUES (?, ?, 0)", (winner, matchday))
+                cur.execute("UPDATE TeamWins SET wins = wins + 1 WHERE team_name = ? AND matchday = ?", (winner, matchday))
 
         # Commit changes to the database after each matchday
         conn.commit()
@@ -67,3 +65,5 @@ for matchday in range(1, 15):
 
 # Close the database connection
 conn.close()
+
+
