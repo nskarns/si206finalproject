@@ -1,0 +1,9 @@
+Police Job Data (job title - total):
+Total - 392
+Sergeant - 32
+PCSO - 143
+Police Constable - 89
+PC - 70
+Inspector - 22
+SGT - 13
+Other - 23
