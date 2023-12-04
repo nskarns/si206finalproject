@@ -1,0 +1,70 @@
+import http.client 
+import json
+import sqlite3
+conn = http.client.HTTPSConnection("api-nba-v1.p.rapidapi.com")
+headers = {
+    'x-rapidapi-host': "api-nba-v1.p.rapidapi.com",
+    'x-rapidapi-key': "59046531c4mshc0feae1efa80a4fp127b15jsn761d45cd0f18" 
+    }
+conn.request("GET", "/teams?league=standard", headers=headers)   
+res = conn.getresponse()
+data = res.read()
+decoded_data = json.loads(data.decode('utf-8'))
+teams = decoded_data['response'] 
+
+#Get team ID for each NBA team 
+new_dict = {} 
+for team in teams: 
+    if team['nbaFranchise'] == True and team['id'] != 37:  
+        id = team['id']
+        name = team['name'] 
+        new_dict[name] = id
+conn.close() 
+
+#Get player weights and heights from each NBA team and create first table 
+conn = http.client.HTTPSConnection("api-nba-v1.p.rapidapi.com")
+headers = {
+    'x-rapidapi-host': "api-nba-v1.p.rapidapi.com",
+    'x-rapidapi-key': "59046531c4mshc0feae1efa80a4fp127b15jsn761d45cd0f18"
+    }
+conn2 = sqlite3.connect("nba_data.db") 
+cur = conn2.cursor() 
+cur.execute(
+        "DROP TABLE IF EXISTS players" 
+        )
+cur.execute(
+    """CREATE TABLE IF NOT EXISTS players (full_name TEXT PRIMARY KEY, height_feet INTEGER, weight INTEGER)"""
+)
+for name,id in new_dict.items():
+    path = "/players?country=USA&season=2021&team=" +str(id)  
+    conn.request("GET", path, headers=headers) 
+    res = conn.getresponse() 
+    data = res.read()
+    decoded_data = json.loads(data.decode('utf-8'))
+    print(decoded_data[0]) 
+    data = decoded_data['response'] 
+    for player in data: 
+        first_name = player['firstname']
+        last_name = player['lastname']
+        full_name = first_name + last_name 
+        try:
+            height = float(player['height']['meters'])
+            height_feet = height * 3.28084 
+        except: 
+            height = 0
+        try:
+            weight = int(player['weight']['pounds']) 
+        except:
+            weight = 0 
+        cur.execute(
+            """INSERT OR IGNORE INTO players (full_name, height_feet, weight) VALUES (?,?,?)""", 
+            (full_name, height_feet, weight)  
+        )
+conn2.commit() 
+
+#TODO
+#create table for players, playerid, weight, team 
+#create table for players, playerid, height, team
+#calculate average weight per team 
+#calculate average hight per team 
+#create a bar graph with average weights and heights per team
