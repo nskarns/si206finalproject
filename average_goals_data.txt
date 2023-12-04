@@ -1,0 +1,20 @@
+Arsenal: Average Goals - 2.07
+Aston Villa: Average Goals - 2.36
+Bournemouth: Average Goals - 1.14
+Brentford: Average Goals - 1.57
+Brighton: Average Goals - 2.14
+Burnley: Average Goals - 1.07
+Chelsea: Average Goals - 1.79
+Crystal Palace: Average Goals - 1.00
+Everton: Average Goals - 1.07
+Fulham: Average Goals - 1.14
+Liverpool: Average Goals - 2.29
+Luton: Average Goals - 0.93
+Manchester City: Average Goals - 2.57
+Manchester United: Average Goals - 1.14
+Newcastle: Average Goals - 2.29
+Nottingham Forest: Average Goals - 1.14
+Sheffield United: Average Goals - 0.79
+Tottenham: Average Goals - 2.00
+West Ham: Average Goals - 1.71
+Wolves: Average Goals - 1.36
