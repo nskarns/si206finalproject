@@ -42,13 +42,12 @@ def calculate_average_goals(database_path):
 
             # Write the formatted string to the file
             file.write(formatted_string)
-            
+
             #print(average_goals)
 
     
     return team_stats
 
-    conn.close()
 
 
 #####################################################################################################################################
@@ -67,9 +66,10 @@ def create_average_goals_chart(database_path):
         plt.ylabel('Average Goals')
         plt.title('Average Goals per Team')
         plt.xticks(rotation=45, ha='right')
+        plt.savefig('average_goals_chart.png')
         plt.show()
            
-        plt.savefig('average_goals_chart.png')
+        
     
     else:
         print("No data available for the chart.")
