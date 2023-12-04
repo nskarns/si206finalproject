@@ -16,7 +16,7 @@ cur.execute('''DROP TABLE IF EXISTS Matches''')
 cur.execute('''CREATE TABLE IF NOT EXISTS Matches
                (matchday INTEGER, team1_name TEXT, team2_name TEXT, team1_score INTEGER, team2_score INTEGER, winner TEXT)''')
 
-# Iterate through matchdays 1 to 14
+# Iterate through matchdays 1 to 14 - there have only been 14 matchdays in the season so far
 for matchday in range(1, 15):
     querystring = {"matchday": str(matchday)}
     response = requests.get(url, headers=headers, params=querystring)
