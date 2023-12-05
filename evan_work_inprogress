@@ -182,5 +182,6 @@ plt.title("Average Weight Per Height Group For California NBA Teams 2021 Season"
 plt.xticks(rotation=45)
 plt.tight_layout()
 # Saving results
-plt.show() 
 plt.savefig('nba_weights_heights.png') 
+plt.show() 
+
