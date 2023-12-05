@@ -150,9 +150,19 @@ cursor.execute(
 )
 grouped_data = cursor.fetchall() 
 print(grouped_data) 
+print(type(grouped_data))
+
+# Creating list for average
+height_range = ['short (5ft9-6ft3)', 'medium (6ft4-6ft7)', 'tall (6ft7-7ft)','None']
+
+# Printing results to a file
+with open("average_weights_data.txt", "w") as file:
+        file.write("Average Weight Data (Height Range (ft. in.) - Average Weight (pds)):\n")
+        for height, average_weight in zip(height_range, grouped_data):
+            file.write(height + " - " + str(average_weight) + "\n")
 
 # Sort the data by height group
-grouped_data.sort(key=lambda x: ['short (5ft9-6ft3)', 'medium (6ft4-6ft7)', 'tall (6ft7-7ft)','None'].index(x[1])) 
+grouped_data.sort(key=lambda x: height_range.index(x[1])) 
 
 #sorting data so x values and y values are together
 x_values = [] 
