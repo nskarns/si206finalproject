@@ -26,7 +26,7 @@ for team in teams:
         california_teams_dict[team_name] = team_id
 
 # Print the dictionary of California teams
-print("California Teams:", california_teams_dict)
+#print("California Teams:", california_teams_dict)
 
 # Create a dictionary with the number of players on each California team
 all_players_data = []
@@ -37,14 +37,14 @@ for team_name, team_id in california_teams_dict.items():
     data = res.read()
     decoded_data = json.loads(data.decode('utf-8')) 
     players_data = decoded_data['response']
-    print(f"Team: {team_name}, Players Count: {len(players_data)}") 
+    #print(f"Team: {team_name}, Players Count: {len(players_data)}") 
     all_players_data.extend(players_data)
     time.sleep(5)
 
 # Function to create a dictionary for each player
 def create_player_dict(player):
     if 'weight' not in player or 'height' not in player:
-        print(f"Skipping player {player['firstname']} {player['lastname']} (ID: {player['id']}) due to missing weight or height data")
+        #print(f"Skipping player {player['firstname']} {player['lastname']} (ID: {player['id']}) due to missing weight or height data")
         return None
 
     
@@ -75,14 +75,15 @@ all_players_list = [create_player_dict(player) for player in all_players_data]
 # Print the resulting list of player dictionaries
 for i, player_dict in enumerate(all_players_list):
     if player_dict is not None:
-        print(f"Player {i + 1}: {player_dict}")
+        pass
+        #print(f"Player {i + 1}: {player_dict}")
 
-print(f"Total players in the list: {len(all_players_list)}")
+#print(f"Total players in the list: {len(all_players_list)}")
 
 conn.close()
 
 # Connect to SQLite database (this will create a new file 'nba_players.db' if it doesn't exist)
-db_connection = sqlite3.connect('nba_players.db')
+db_connection = sqlite3.connect('database.db')
 cursor = db_connection.cursor()
 
 # Create a table to store player information
@@ -149,8 +150,6 @@ cursor.execute(
     """
 )
 grouped_data = cursor.fetchall() 
-print(grouped_data) 
-print(type(grouped_data))
 
 # Creating list for average
 height_range = ['short (5ft9-6ft3)', 'medium (6ft4-6ft7)', 'tall (6ft7-7ft)','None']

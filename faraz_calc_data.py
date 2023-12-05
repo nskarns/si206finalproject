@@ -66,6 +66,7 @@ def create_average_goals_chart(database_path):
         plt.ylabel('Average Goals')
         plt.title('Average Goals per Team')
         plt.xticks(rotation=45, ha='right')
+        plt.tight_layout()
         plt.savefig('average_goals_chart.png')
         plt.show()
             
@@ -74,5 +75,5 @@ def create_average_goals_chart(database_path):
 
 
 #FunctionCall
-create_average_goals_chart("premier_league_data.db")
+create_average_goals_chart("database.db")
 #print(calculate_average_goals("premier_league_data.db"))

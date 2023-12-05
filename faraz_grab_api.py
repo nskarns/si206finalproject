@@ -49,4 +49,4 @@ def grab_PL_team_data(database_path):
     conn.close()
 
 # Call the function with the desired database path
-grab_PL_team_data("premier_league_data.db")
+grab_PL_team_data("database.db")
