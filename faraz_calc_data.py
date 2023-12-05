@@ -38,7 +38,7 @@ def calculate_average_goals(database_path):
             average_goals = stats['total_goals'] / stats['match_count']
 
             # Create a formatted string with the team name and average goals
-            formatted_string = f"{team}: Average Goals - {average_goals:.2f}\n"
+            formatted_string = f"{team}: Average Goals - {average_goals:.2f}\n" #use to get floating point numbers 
 
             # Write the formatted string to the file
             file.write(formatted_string)

@@ -24,34 +24,26 @@ def grab_PL_team_data(database_path):
         querystring = {"matchday": str(matchday)}
         response = requests.get(url, headers=headers, params=querystring)
 
-        try:
-            response.raise_for_status()
-            data = response.json()
+        response.raise_for_status()
+        data = response.json()
 
-            for match in data.get('matches', []):
-                team1_name = match['team1']['teamName']
-                team2_name = match['team2']['teamName']
-                team1_score = match['team1'].get('teamScore', None)
-                team2_score = match['team2'].get('teamScore', None)
+        for match in data.get('matches', []):
+            team1_name = match['team1']['teamName']
+            team2_name = match['team2']['teamName']
+            team1_score = match['team1'].get('teamScore', None)
+            team2_score = match['team2'].get('teamScore', None)
 
-                # Determine the winner or mark as draw
-                if team1_score is not None and team2_score is not None:
-                    winner = team1_name if team1_score > team2_score else (team2_name if team2_score > team1_score else "Draw")
-                else:
-                    winner = None
+            # Determine the winner or mark as draw
+            if team1_score is not None and team2_score is not None:
+                winner = team1_name if team1_score > team2_score else (team2_name if team2_score > team1_score else "Draw")
+            else:
+                winner = None
 
-                # Store match information in the Matches table
-                cur.execute("INSERT INTO Matches VALUES (?, ?, ?, ?, ?, ?)", (matchday, team1_name, team2_name, team1_score, team2_score, winner))
+            # Store match information in the Matches table
+            cur.execute("INSERT INTO Matches VALUES (?, ?, ?, ?, ?, ?)", (matchday, team1_name, team2_name, team1_score, team2_score, winner))
 
-            # Commit changes to the database after each matchday
-            conn.commit()
-
-        except requests.exceptions.HTTPError as http_err:
-            print(f'HTTP error occurred: {http_err}')
-            print(f'Response text: {response.text}')
-
-        except Exception as e:
-            print(f'An error occurred: {e}')
+        # Commit changes to the database after each matchday
+        conn.commit()
 
     # Close the database connection
     conn.close()
