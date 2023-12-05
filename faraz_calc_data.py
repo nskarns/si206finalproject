@@ -68,9 +68,7 @@ def create_average_goals_chart(database_path):
         plt.xticks(rotation=45, ha='right')
         plt.savefig('average_goals_chart.png')
         plt.show()
-           
-        
-    
+            
     else:
         print("No data available for the chart.")
 
