@@ -153,11 +153,12 @@ grouped_data = cursor.fetchall()
 
 # Creating list for average
 height_range = ['short (5ft9-6ft3)', 'medium (6ft4-6ft7)', 'tall (6ft7-7ft)','None']
+another_height_range = ['None','short (5ft9-6ft3)', 'medium (6ft4-6ft7)', 'tall (6ft7-7ft)']
 
 # Printing results to a file
 with open("nba_weights_heights.txt", "w") as file:
         file.write("Average Weight Data (Height Range (ft. in.) - Average Weight (pds)):\n")
-        for height, average_weight in zip(height_range, grouped_data):
+        for height, average_weight in zip(another_height_range, grouped_data):
             file.write(height + " - " + str(average_weight) + "\n")
 
 # Sort the data by height group
