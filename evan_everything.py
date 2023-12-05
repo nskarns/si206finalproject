@@ -156,7 +156,7 @@ print(type(grouped_data))
 height_range = ['short (5ft9-6ft3)', 'medium (6ft4-6ft7)', 'tall (6ft7-7ft)','None']
 
 # Printing results to a file
-with open("average_weights_data.txt", "w") as file:
+with open("nba_weights_heights.txt", "w") as file:
         file.write("Average Weight Data (Height Range (ft. in.) - Average Weight (pds)):\n")
         for height, average_weight in zip(height_range, grouped_data):
             file.write(height + " - " + str(average_weight) + "\n")

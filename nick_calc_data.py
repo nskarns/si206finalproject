@@ -59,7 +59,7 @@ def create_police_graph(results):
     plt.tight_layout()
 
     # Saving results
-    plt.savefig('job_amounts.png')  
+    plt.savefig('police_job_data.png')  
 
 # Declaring variables
 path = os.path.dirname(os.path.abspath("database.db"))
