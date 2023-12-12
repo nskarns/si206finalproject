@@ -1,5 +1,7 @@
+PUT DESCRIPTION HERE
+
 Average Weight Data (Height Range (ft. in.) - Average Weight (pds)):
 None - (0.0, 'None')
-short (5ft9-6ft3) - (207.0, 'medium (6ft4-6ft7)')
-medium (6ft4-6ft7) - (188.0, 'short (5ft9-6ft3)')
+medium (6ft4-6ft7) - (207.0, 'medium (6ft4-6ft7)')
+short (5ft9-6ft3) - (188.0, 'short (5ft9-6ft3)')
 tall (6ft7-7ft) - (232.0, 'tall (6ft7-7ft)')
