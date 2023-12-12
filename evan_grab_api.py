@@ -181,10 +181,10 @@ def visual_inputs(cursor,conn):
     db_connection.commit()
     db_connection.close()
 
-db_connection = sqlite3.connect('nba_players.db') 
+db_connection = sqlite3.connect('database.db') 
 cursor = db_connection.cursor() 
 # Create a list of player dictionaries for all players
 all_players_list = [create_player_dict(player) for player in all_players_data] 
-#set_up_tables(cursor,db_connection) 
+set_up_tables(cursor,db_connection) 
 fill_database(cursor,db_connection) 
 #visual_inputs(cursor,conn) 
